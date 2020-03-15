@@ -39,6 +39,13 @@ if(isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <title>WEB</title>
+    <style>
+        a:hover {
+            text-decoration : none;
+            color : red;
+        }
+    </style>
+
 </head>
 <body>
     <h1><a href="index.php">WEB</a></h1>

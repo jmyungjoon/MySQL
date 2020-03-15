@@ -23,6 +23,15 @@ if(isset($_GET['id'])) {
     $article['description'] = htmlspecialchars($row['description']);
     $update_link ='<a href="update.php?id='.$_GET['id'].'">update</a>';
 }
+
+$sql = "SELECT * FROM author";
+$result = mysqli_query($conn, $sql);
+$select_form = '<select name="author_id">';
+while($row = mysqli_fetch_array($result)){
+  $select_form .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+}
+$select_form .= '</select>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +48,7 @@ if(isset($_GET['id'])) {
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
         <p><input type="text" name="title" placeholder="title" value="<?=$article['title']?>"></p>
         <p><textarea name="description" placeholder="description"><?=$article['description']?></textarea></p>
+        <?=$select_form?>
         <p><input type="submit"></p>
     </form>
 </body>
